@@ -8,4 +8,8 @@ describe Player do
       expect(player.name).to eq "Bob"
     end
   end
+  
+  describe '#attack' do
+    
+  end
 end
