@@ -1,7 +1,5 @@
 <p><%= $player1 %> versus <%= $player2 %></p>
 
-<p><%= $player2 %> has 100 hit points</p>
-
 <form action="/attack" method="post">
   <button type="submit">Attack!</button>
 </form>
@@ -9,3 +7,5 @@
 <% if @player_2_attacked %>
   <p><%= $player1 %> attacked <%= $player2 %>!</p>
 <% end %>
+
+<p><%= $player2 %> has <%= $player_2.hit_points %> hit points</p>

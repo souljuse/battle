@@ -11,8 +11,10 @@ class Battle < Sinatra::Base
   end
 
   post '/names' do
-    $player1 = Player.new(params[:Player1]).name
-    $player2 = Player.new(params[:Player2]).name
+    $player_1 = Player.new(params[:Player1])
+    $player_2 = Player.new(params[:Player2])
+    $player1 = $player_1.name
+    $player2 = $player_2.name
     # session[:player_1_name] = params[:Player1]
     # session[:player_2_name] = params[:Player2]
     redirect '/play'
@@ -25,9 +27,10 @@ class Battle < Sinatra::Base
 
   post '/attack' do
     session[:attack_on_player_2] = true
+    $player_2.is_attacked  
     redirect '/play'
   end
 
-  # start the server if ruby file executed directly
+  
   run! if app_file == $0
 end
