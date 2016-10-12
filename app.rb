@@ -1,6 +1,10 @@
 require 'sinatra/base'
+require './lib/player'
 
 class Battle < Sinatra::Base
+  
+  $player_1 = Player.new(@player_1_name)
+  $player_2 = Player.new(@player_2_name)
 
   enable :sessions
 
