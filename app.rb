@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require 'spec_helper'
 
 class Battle < Sinatra::Base
   use Rack::Session::Cookie,  :key => 'rack.session',
@@ -10,14 +11,14 @@ class Battle < Sinatra::Base
   end
 
   post '/names' do
-    session[:player_1_name] = params[:Player1]
-    session[:player_2_name] = params[:Player2]
+    $player1 = Player.new(params[:Player1]).name
+    $player2 = Player.new(params[:Player2]).name
+    # session[:player_1_name] = params[:Player1]
+    # session[:player_2_name] = params[:Player2]
     redirect '/play'
   end
 
   get '/play' do
-    @player_1_name = session[:player_1_name]
-    @player_2_name = session[:player_2_name]
     @player_2_attacked = session[:attack_on_player_2]
     erb(:play)
   end
