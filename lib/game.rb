@@ -16,17 +16,21 @@ class Game
   def player_2
     @players.last
   end
-  
+
   def switch
     @current_player = opponent_of(@current_player)
   end
-  
+
   def attack(player)
     player.receive_damage
   end
-  
+
+  def opponent
+    opponent_of(current_player)
+  end
+
   private
-  
+
   def opponent_of(player)
     @players.select { |p| p != player }.first
   end
