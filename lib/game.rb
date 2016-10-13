@@ -2,7 +2,7 @@ require_relative 'player'
 
 class Game
 
-  attr_reader :current_player
+  attr_reader :current_player#, :game_over, :loser
 
   def initialize(player_1, player_2)
     @players = [player_1, player_2]
@@ -27,6 +27,14 @@ class Game
 
   def opponent
     opponent_of(current_player)
+  end
+  
+  def game_over?
+    !loser.nil?
+  end
+  
+  def loser
+     @players.select { |p| p.hit_points <= 0 }.first
   end
 
   private

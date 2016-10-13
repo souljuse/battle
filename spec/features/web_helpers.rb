@@ -10,3 +10,10 @@ def play_and_attack
   click_link 'Attack'
   click_button 'OK'
 end
+
+def attack_to_death
+  9.times do 
+  click_link 'Attack'
+  click_button 'OK'
+  end
+end
