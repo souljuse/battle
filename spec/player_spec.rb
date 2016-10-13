@@ -11,8 +11,7 @@ describe Player do
 
 	describe '#is_attacked' do
 		it 'should take HP of the attacked player' do
-
-			expect{ batman.is_attacked(10)}.to change {batman.hit_points}.by(-10)
+			expect{ batman.is_attacked(10 )}.to change {batman.hit_points}.by(-10)
 		end
 	end
 
