@@ -16,9 +16,6 @@ class Battle < Sinatra::Base
     @player_1 = Player.new(params[:Player1])
     @player_2 = Player.new(params[:Player2])
     @game = Game.new_game(@player_1, @player_2)
-    #$game = Game.new(@player_1, @player_2)
-    # session[:player_1_name] = params[:Player1]
-    # session[:player_2_name] = params[:Player2]
     redirect '/play'
   end
 
@@ -31,7 +28,6 @@ class Battle < Sinatra::Base
 
   post '/attack' do
     @game = Game.instance
-    #@game = $game
     session[:attack_on_player_2] = true
     @game.attack(@game.second_player)
     @game.switch

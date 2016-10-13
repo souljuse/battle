@@ -1,9 +1,11 @@
 require 'game'
 
 describe Game do
-  let(:player1) { double(:player, hit_points: 20) }
-  let(:player2) { double(:player, hit_points: 20) }
-  subject(:game) { described_class.new(player1, player2) }
+  let(:player1)    { double(:player, hit_points: 20) }
+  let(:player2)    { double(:player, hit_points: 20) }
+  let(:deadplayer) { double(:player, hit_points: 0)}
+  subject(:game)   { described_class.new(player1, player2) }
+  subject(:gameover) {described_class.new(deadplayer, player2)}
 
   describe "#is_attack" do
     it "should reduce the player's HP by 10 points" do
@@ -24,4 +26,16 @@ describe Game do
       expect(game.second_player).to eq player2
     end
   end
+
+  describe '#game_over?' do
+    it 'returns true if one player has 0hp' do
+      expect(gameover.game_over?).to eq true
+    end
+
+    it 'returns false if no player is at 0hp' do
+      expect(game.game_over?).to eq false
+    end
+  end
+
+
 end
