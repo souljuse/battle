@@ -15,4 +15,14 @@ class Game
    @first_player = @second_player
    @second_player = temp
  end
+
+ def game_over
+   if @first_player.hit_points <= 0
+     @second_player
+   elsif @second_player.hit_points <= 0
+     @first_player
+   else
+     nil
+   end
+ end
 end

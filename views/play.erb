@@ -1,12 +1,16 @@
-<h2><%= $game.first_player.name %> versus <%= $game.second_player.name %></h2>
+<% if !!$game.game_over %>
+  <h1>Game over! <%= $game.game_over.name %> wins!</h1>
+<% else %>
+  <h2><%= $game.first_player.name %> versus <%= $game.second_player.name %></h2>
 
-<p><%= $game.second_player.name %> has <%= $game.second_player.hit_points %> hit points</p>
-<p><%= $game.first_player.name %> has <%= $game.first_player.hit_points %> hit points</p>
+  <p><%= $game.second_player.name %> has <%= $game.second_player.hit_points %> hit points</p>
+  <p><%= $game.first_player.name %> has <%= $game.first_player.hit_points %> hit points</p>
 
-<form action="/attack" method="post">
-  <button type="submit">Attack!</button>
-</form>
+  <form action="/attack" method="post">
+    <button type="submit">Attack!</button>
+  </form>
 
-<% if @player_2_attacked %>
-  <p><%= $game.first_player.name %> attacks <%= $game.second_player.name %>!</p>
+  <% if @player_2_attacked %>
+    <p><%= $game.first_player.name %> attacks <%= $game.second_player.name %>!</p>
+  <% end %>
 <% end %>

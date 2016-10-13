@@ -23,7 +23,6 @@ class Battle < Sinatra::Base
 
   get '/play' do
     @player_2_attacked = session[:attack_on_player_2]
-    p $game.second_player
     erb(:play)
   end
 
