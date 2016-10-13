@@ -1,9 +1,12 @@
 require 'spec_helper'
 
 feature 'game over!' do
-  scenario 'one player has 0hp' do
-    sign_in_and_play
-    19.times{attack}
+  before do
+   sign_in_and_play
+   18.times{attack}
+  end
+   scenario 'one player has 0hp' do
+    attack
     expect(page).to have_content 'Game over! Tom wins!'
   end
 end
