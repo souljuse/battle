@@ -15,13 +15,13 @@ describe Game do
 
   describe '#player_1' do
     it 'should equal player 1' do
-      expect(game.player_1).to eq player1
+      expect(game.first_player).to eq player1
     end
   end
 
   describe '#player_2' do
     it 'should equal player_2' do
-      expect(game.player_2).to eq player2
+      expect(game.second_player).to eq player2
     end
   end
 end

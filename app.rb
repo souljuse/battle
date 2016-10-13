@@ -1,6 +1,7 @@
 require 'sinatra/base'
 # require 'spec_helper'
 require './lib/player'
+require './lib/game'
 
 class Battle < Sinatra::Base
   use Rack::Session::Cookie,  :key => 'rack.session',
@@ -22,13 +23,15 @@ class Battle < Sinatra::Base
 
   get '/play' do
     @player_2_attacked = session[:attack_on_player_2]
+    p $game.second_player
     erb(:play)
   end
 
   post '/attack' do
     @game = $game
     session[:attack_on_player_2] = true
-    @game.attack(@game.player_2)
+    @game.attack(@game.second_player)
+    @game.switch
     redirect '/play'
   end
 
