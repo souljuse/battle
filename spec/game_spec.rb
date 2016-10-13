@@ -29,13 +29,11 @@ describe Game do
 
   describe '#game_over?' do
     it 'returns true if one player has 0hp' do
-      expect(gameover.game_over?).to eq true
+      expect(gameover.game_over).not_to be_nil
     end
 
     it 'returns false if no player is at 0hp' do
-      expect(game.game_over?).to eq false
+      expect(game.game_over).to be_nil
     end
   end
-
-
 end

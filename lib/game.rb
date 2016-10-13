@@ -1,3 +1,5 @@
+require_relative 'attack'
+
 class Game
 
   attr_reader :game
@@ -11,14 +13,23 @@ class Game
  end
 
 
- attr_reader :first_player, :second_player
+ attr_reader :first_player, :second_player, :the_attack
  def initialize(player1, player2)
    @first_player = player1
    @second_player = player2
+   @the_attack = Attack.new
  end
 
  def attack(player)
-  player.is_attacked
+  player.is_attacked(@the_attack.tackle)
+ end
+
+ def fire_attack(player)
+   player.is_attacked(@the_attack.fire_ball)
+ end
+
+ def punch_attack(player)
+   player.is_attacked(@the_attack.death_punch)
  end
 
  def switch

@@ -34,6 +34,21 @@ class Battle < Sinatra::Base
     redirect '/play'
   end
 
+  post '/fire_ball' do
+    @game = Game.instance
+    session[:attack_on_player_2] = true
+    @game.fire_attack(@game.second_player)
+    @game.switch
+    redirect '/play'
+  end
+
+  post '/death_punch' do
+    @game = Game.instance
+    session[:attack_on_player_2] = true
+    @game.punch_attack(@game.second_player)
+    @game.switch
+    redirect '/play'
+  end
 
   run! if app_file == $0
 end

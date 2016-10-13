@@ -9,7 +9,12 @@
   <form action="/attack" method="post">
     <button type="submit">Attack!</button>
   </form>
-
+  <form action="/fire_ball" method="post">
+    <button type="submit">Fire ball!</button>
+  </form>
+  <form action="/death_punch" method="post">
+    <button type="submit">Death Punch!</button>
+  </form>
   <% if @player_2_attacked %>
     <p><%= Game.instance.first_player.name %> attacks <%= Game.instance.second_player.name %>!</p>
   <% end %>

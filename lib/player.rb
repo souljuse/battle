@@ -8,14 +8,8 @@ class Player
     @hit_points = MAX_HP
   end
 
-  def is_attacked
+  def is_attacked(damage)
     @hit_points -= damage
-  end
-
-  private
-
-  def damage
-   Kernel.rand(1..10)
   end
 
 end
