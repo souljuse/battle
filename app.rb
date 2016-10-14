@@ -35,9 +35,19 @@ class Battle < Sinatra::Base
       redirect '/game_over'
     elsif @game.player_2.name == 'Computer'
       @game.attack(@game.opponent)
-      @game.switch
+      if @game.game_over?
+        redirect '/game_over'
+      else
+        redirect '/AI_attack'
+      end
+    else
+      redirect '/play'
     end
-    redirect '/play'
+  end
+
+  get '/AI_attack' do
+    @game.switch
+    erb(:AI_attack)
   end
 
   get '/game_over' do

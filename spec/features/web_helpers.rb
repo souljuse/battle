@@ -39,5 +39,6 @@ def attack_to_death_computer
   9.times do
     click_link 'Attack'
     click_button 'OK'
+    click_button 'OK'
   end
 end
