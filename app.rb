@@ -15,6 +15,7 @@ class Battle < Sinatra::Base
   post '/names' do
     player_1 = Player.new(params[:player_1_name])
     player_2 = Player.new(params[:player_2_name])
+    player_2.name == "" ? player_2 = Player.new('Computer') : player_2
     @game = Game.create(player_1, player_2)
     redirect '/play'
   end
@@ -32,9 +33,11 @@ class Battle < Sinatra::Base
     @game.switch
     if @game.game_over?
       redirect '/game_over'
-    else
-      redirect '/play'
+    elsif @game.player_2.name == 'Computer'
+      @game.attack(@game.opponent)
+      @game.switch
     end
+    redirect '/play'
   end
 
   get '/game_over' do
