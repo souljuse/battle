@@ -8,9 +8,9 @@ class Game
 
   def self.instance
     @game
-  end 
+  end
 
-  attr_reader :current_player#, :game_over, :loser
+  attr_reader :current_player, :last_damage
 
   def initialize(player_1, player_2)
     @players = [player_1, player_2]
@@ -30,7 +30,12 @@ class Game
   end
 
   def attack(player)
-    player.receive_damage
+    @last_damage = damage
+    player.receive_damage(@last_damage)
+  end
+
+  def damage
+    rand(11)
   end
 
   def opponent

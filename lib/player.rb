@@ -1,3 +1,5 @@
+require_relative 'game'
+
 class Player
 
   attr_reader :name
@@ -11,8 +13,8 @@ class Player
     @hit_points = hit_points
   end
 
-  def receive_damage
-    @hit_points -= 10
+  def receive_damage(damage)
+    @hit_points -= damage
   end
 
 end

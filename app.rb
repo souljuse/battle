@@ -20,18 +20,15 @@ class Battle < Sinatra::Base
   end
 
   get '/play' do
-    # @game = Game.instance
     erb(:play)
   end
 
   get '/attack' do
-    # @game = Game.instance
     @game.attack(@game.opponent)
     erb(:attack)
   end
 
   post '/switching_turns' do
-    # @game = Game.instance
     @game.switch
     if @game.game_over?
       redirect '/game_over'
@@ -41,7 +38,6 @@ class Battle < Sinatra::Base
   end
 
   get '/game_over' do
-    # @game = Game.instance
     erb(:game_over)
   end
   # start the server if ruby file executed directly
