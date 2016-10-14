@@ -1,6 +1,5 @@
 def sign_in_and_play_human
   visit('/')
-  click_button 'Versus'
   fill_in :player_1_name, with: "Bob"
   fill_in :player_2_name, with: "Larry"
   click_button 'Submit'
@@ -23,14 +22,13 @@ end
 
 def sign_in_and_play_computer
   visit('/')
-  click_button 'Train'
   fill_in :player_1_name, with: "Bob"
   click_button 'Submit'
 end
 
 
 def play_and_attack_computer
-  sign_in_and_play
+  sign_in_and_play_computer
   allow(Game.instance).to receive(:damage).and_return(10)
   click_link 'Attack'
   click_button 'OK'

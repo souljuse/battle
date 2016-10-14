@@ -2,7 +2,7 @@ require_relative 'player'
 
 class Game
 
-  def self.create(player_1, player_2 = Player.new('Computer'))
+  def self.create(player_1, player_2)
     @game = Game.new(player_1, player_2)
   end
 
@@ -12,7 +12,7 @@ class Game
 
   attr_reader :current_player, :last_damage
 
-  def initialize(player_1, player_2 = Player.new('Computer'))
+  def initialize(player_1, player_2)
     @players = [player_1, player_2]
     @current_player = player_1
   end

@@ -30,13 +30,13 @@ feature 'Attack player' do
   scenario 'human and copmuter players both receive damage' do
     play_and_attack_computer
     expect(page).to have_content("Bob: 40HP")
-    expedct(page).to have_content("Computer: 40HP")
+    expect(page).to have_content("Computer: 40HP")
     expect(page).not_to have_content("Bob: 50HP")
     expect(page).not_to have_content("Computer: 50HP")
   end
 
   scenario 'human player to receive attack confirmation' do
-    sign_in_and_play
+    sign_in_and_play_computer
     click_link 'Attack'
     expect(page).to have_content("Bob attacked Computer for 10 damage")
   end
