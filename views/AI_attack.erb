@@ -1,0 +1,5 @@
+<%= @game.opponent.name %> attacked <%= @game.current_player.name %> for <%= @game.last_damage %> damage
+
+<form action="/play" method="get">
+  <input type="submit" value= "OK">
+</form>
